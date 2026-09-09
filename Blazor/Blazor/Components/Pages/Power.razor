@@ -1,0 +1,24 @@
+﻿@page "/Power"
+@rendermode InteractiveServer
+
+@using System.Numerics;
+
+<h1>Power</h1>
+
+<div>
+	<div>Введите число: </div>
+	<div>
+		<input type="number" @bind="number" @bind:after="Power_result" />
+	</div>
+</div>
+
+<div>
+	<div>Введите степень: </div>
+	<div>
+		<input type="number" @bind="exponent" @bind:after="Power_result" />
+	</div>
+</div>
+
+<div>
+	<h3> Результат:  @result;</h3>
+</div>
