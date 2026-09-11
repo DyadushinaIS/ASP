@@ -1,0 +1,15 @@
+﻿@page "/Fibonacci"
+@rendermode InteractiveServer
+@using System.Numerics;
+
+
+<h1>Fibonacci</h1>
+<div>Введите количество чисел в ряде Фибоначчи:
+	<div><input type="number" @bind="amount" @bind:after="Fibonacci_row" /></div>
+</div>
+
+<div>Ряд Фибоначчи:</div>
+<div>
+	<h3> Результат: @result</h3>
+</div>
+
