@@ -1,0 +1,40 @@
+@page "/groups"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using Microsoft.EntityFrameworkCore
+@using MyAcademy1.Models
+@using MyAcademy1.Models
+@implements IAsyncDisposable
+@inject IDbContextFactory<MyAcademy1.Models.PV_522_ImportContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="groups/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.Groups">
+    <PropertyColumn Property="group => group.GroupName" />
+    <PropertyColumn Property="group => group.Direction" />
+    <PropertyColumn Property="group => group.DirectionNavigation" />
+    <PropertyColumn Property="group => group.Students" />
+
+    <TemplateColumn Context="group">
+        <a href="@($"groups/edit?groupid={group.GroupId}")">Edit</a> |
+        <a href="@($"groups/details?groupid={group.GroupId}")">Details</a> |
+        <a href="@($"groups/delete?groupid={group.GroupId}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private PV_522_ImportContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

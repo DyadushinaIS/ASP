@@ -1,0 +1,39 @@
+@page "/directions"
+@rendermode InteractiveServer
+
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using Microsoft.EntityFrameworkCore
+@using MyAcademy1.Models
+@implements IAsyncDisposable
+@inject IDbContextFactory<MyAcademy1.Models.PV_522_ImportContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="directions/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.Directions">
+    <PropertyColumn Property="direction => direction.DirectionName" />
+    <PropertyColumn Property="direction => direction.Groups" />
+
+    <TemplateColumn Context="direction">
+        <a href="@($"directions/edit?directionid={direction.DirectionId}")">Edit</a> |
+        <a href="@($"directions/details?directionid={direction.DirectionId}")">Details</a> |
+        <a href="@($"directions/delete?directionid={direction.DirectionId}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private PV_522_ImportContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}
