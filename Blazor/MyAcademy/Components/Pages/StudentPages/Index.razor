@@ -1,0 +1,43 @@
+@page "/students"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using Microsoft.EntityFrameworkCore
+@using MyAcademy.Models
+@implements IAsyncDisposable
+@inject IDbContextFactory<MyAcademyContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="students/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.Student">
+    <PropertyColumn Property="student => student.LastName" />
+    <PropertyColumn Property="student => student.FirstName" />
+    <PropertyColumn Property="student => student.MiddleName" />
+    <PropertyColumn Property="student => student.BirthDate" />
+    <PropertyColumn Property="student => student.Email" />
+    <PropertyColumn Property="student => student.Phone" />
+    <PropertyColumn Property="student => student.Photo" />
+    <PropertyColumn Property="student => student.GroupNumber" />
+
+    <TemplateColumn Context="student">
+        <a href="@($"students/edit?id={student.Id}")">Edit</a> |
+        <a href="@($"students/details?id={student.Id}")">Details</a> |
+        <a href="@($"students/delete?id={student.Id}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private MyAcademyContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}
