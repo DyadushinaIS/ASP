@@ -2,28 +2,31 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace MyAcademy1.Models;
-
-public partial class Student
+namespace MyAcademy1.Models
 {
-    public int StudId { get; set; }
+    public partial class Student
+    {
+        [Key]
+        public int StudId { get; set; }
 
-    public string LastName { get; set; }
+        public string LastName { get; set; }
 
-    public string FirstName { get; set; }
+        public string FirstName { get; set; }
 
-    public string MiddleName { get; set; }
+        public string MiddleName { get; set; }
 
-    public DateOnly BirthDate { get; set; }
+        public DateOnly BirthDate { get; set; }
 
-    public string Email { get; set; }
+        public string Email { get; set; }
 
-    public string Phone { get; set; }
+        public string Phone { get; set; }
 
-    public byte[] Photo { get; set; }
+        public byte[] Photo { get; set; }
 
-    public int? Group { get; set; }
+        public int? Group { get; set; }
 
-    public virtual Group GroupNavigation { get; set; }
+        public virtual Group GroupNavigation { get; set; }
+    }
 }
