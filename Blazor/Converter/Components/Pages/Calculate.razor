@@ -1,0 +1,33 @@
+﻿@page "/Calculate"
+@rendermode InteractiveServer
+
+<div>
+    <h3>DEC2BIN</h3>
+    Введите десятичное число:
+    <input type="number" @bind="your_number" @bind:after="Convertion" />
+    <br>Число в двоичной СС: @result
+</div>
+
+<div>
+    <br />
+    <h3>DEC2HEX</h3>
+    Введите десятичное число:
+    <input type="number" @bind="your_number_1" @bind:after="Convertion_1" />
+    <br>Число в шестнадцатиричной СС: @result_1
+</div>
+
+<div>
+    <br />
+    <h3>BIN2DEC</h3>
+    Введите двоичное число:
+    <input type="text" @bind="your_number_2" @bind:after="Convertion_2" />
+    <br>Число в десятичной СС: @result_2
+</div>
+
+<div>
+    <br />
+    <h3>HEX2DEC</h3>
+    Введите шестнадцатиричное число:
+    <input type="text" @bind="your_number_3" @bind:after="Convertion_3" />
+    <br>Число в десятичной СС: @result_3
+</div>
