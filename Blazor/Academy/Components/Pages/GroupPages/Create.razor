@@ -46,7 +46,7 @@
                 <label for="direction" class="form-label">Direction:</label> 
                 <InputText id="direction" @bind-Value="Group.Direction" class="form-control" /> 
                 <ValidationMessage For="() => Group.Direction" class="text-danger" /> 
-            </div> *@        
+            </div>  *@       
             <button type="submit" class="btn btn-primary">Create</button>
         </EditForm>
     </div>
@@ -66,7 +66,7 @@
     private async Task AddGroup()
     {
         using var context = DbFactory.CreateDbContext();
-        context.Group.Add(Group);
+        context.Groups.Add(Group);
         await context.SaveChangesAsync();
         NavigationManager.NavigateTo("/groups");
     }

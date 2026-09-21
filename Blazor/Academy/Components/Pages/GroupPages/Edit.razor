@@ -49,11 +49,11 @@ else
                     <InputNumber id="learning_days" @bind-Value="Group.learning_days" class="form-control" />
                     <ValidationMessage For="() => Group.learning_days" class="text-danger" />
                 </div>
-                <div class="mb-3">
+                @* <div class="mb-3">
                     <label for="direction" class="form-label">Direction:</label>
                     <InputText id="direction" @bind-Value="Group.Direction" class="form-control" />
                     <ValidationMessage For="() => Group.Direction" class="text-danger" />
-                </div>
+                </div> *@
                 <button type="submit" class="btn btn-primary">Save</button>
             </EditForm>
         </div>
@@ -74,7 +74,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         using var context = DbFactory.CreateDbContext();
-        Group ??= await context.Group.FirstOrDefaultAsync(m => m.group_id == group_id);
+        Group ??= await context.Groups.FirstOrDefaultAsync(m => m.group_id == group_id);
 
         if (Group is null)
         {
@@ -111,6 +111,6 @@ else
     private bool GroupExists(int group_id)
     {
         using var context = DbFactory.CreateDbContext();
-        return context.Group.Any(e => e.group_id == group_id);
+        return context.Groups.Any(e => e.group_id == group_id);
     }
 }
