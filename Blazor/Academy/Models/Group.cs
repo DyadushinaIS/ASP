@@ -6,18 +6,19 @@ namespace Academy.Models
     public class Group
     {
         [Key]
-        [Column (TypeName ="TINYINT")]
+        //[Column(TypeName ="TINYINT")]
         public int group_id {  get; set; }
         [Required]
         [StringLength(10,MinimumLength =4)]
         public string group_name { get; set; }
 
         [Required]
+        [Column(TypeName ="TINYINT")]
         [ForeignKey(nameof(Direction))]
         public int direction { get; set; }
         public DateOnly? start_date { get; set; }
         public TimeOnly? start_time { get; set; }
-        [Column (TypeName ="TINYINT")]
+        [Column(TypeName ="TINYINT")]
         public int? learning_days { get; set; }
 
         //Navigation properties
