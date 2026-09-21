@@ -11,9 +11,22 @@
 
 <h1>Index</h1>
 
-<p>
-    <a href="movies/create">Create New</a>
-</p>
+<div class="controls">
+    <p>
+        <a href="movies/create">Create New</a>
+    </p>
+
+    <div>
+        <label for="items-per-page">Ёлементов на странице: </label>
+        <select @bind-="pagination.ItemsPerPage" id="items-per-page">
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+        </select>
+    </div>
+</div>
 
 <QuickGrid Class="table" Items="context.Movie" Pagination="pagination">
     @* <PropertyColumn Property="movie => movie.Title" /> *@
