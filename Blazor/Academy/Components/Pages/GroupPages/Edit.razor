@@ -31,7 +31,16 @@ else
                 <div class="mb-3">
                 <span class="text-danger">*</span>
                     <label for="direction" class="form-label">direction:</label>
-                    <InputNumber id="direction" @bind-Value="Group.direction" class="form-control" aria-required="true"/>
+                    @* <InputNumber id="direction" @bind-Value="Group.direction" class="form-control" aria-required="true"/> *@
+                    <InputSelect @bind-Value="Group.direction" class="form-control" >
+                        @using (AcademyContext context =DbFactory.CreateDbContext())
+                        {
+                            @foreach (Direction direction in context.Directions)
+                            {
+                                <option value="@direction.direction_id">@direction.direction_name</option>
+                            }
+                        }
+                    </InputSelect>
                     <ValidationMessage For="() => Group.direction" class="text-danger" />
                 </div>
                 <div class="mb-3">
@@ -41,7 +50,7 @@ else
                 </div>
                 <div class="mb-3">
                     <label for="start_time" class="form-label">start_time:</label>
-                    <InputDate id="start_time" @bind-Value="Group.start_time" class="form-control" />
+                    <input type="time" id="start_time" @bind="Group.start_time" class="form-control" />
                     <ValidationMessage For="() => Group.start_time" class="text-danger" />
                 </div>
                 <div class="mb-3">
@@ -105,7 +114,7 @@ else
             }
         }
 
-        NavigationManager.NavigateTo("/groups");
+        NavigationManager.NavigateTo($"/groups/details?group_id={group_id}");
     }
 
     private bool GroupExists(int group_id)
