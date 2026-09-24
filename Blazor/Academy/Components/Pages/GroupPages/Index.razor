@@ -9,7 +9,7 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Направления обучения</h1>
+<h1>Группы</h1>
 
 <div class="controls">
     <p>
@@ -29,7 +29,7 @@
 
 <div class="grid-container">
     <QuickGrid Class="table" Items="context.Groups" Pagination="pagination">
-        <PropertyColumn Property="group => group.group_name" />
+        <PropertyColumn Property="group => group.group_name" Title="Название группы" />
         <PropertyColumn Property="group => group.direction" />
         <PropertyColumn Property="group => group.start_date" />
         <PropertyColumn Property="group => group.start_time" />
