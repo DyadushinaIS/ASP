@@ -30,7 +30,7 @@ else
                 </div>
                 <div class="mb-3">
                     <label for="group" class="form-label">Group:</label>
-                    <InputText id="group" @bind-Value="Student.Group" class="form-control" />
+                    <InputText id="group" @bind-Value="Student.Group.group_name" class="form-control" />
                     <ValidationMessage For="() => Student.Group" class="text-danger" />
                 </div>
                 <div class="mb-3">
@@ -91,7 +91,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         using var context = DbFactory.CreateDbContext();
-        Student ??= await context.Student.FirstOrDefaultAsync(m => m.stud_id == stud_id);
+        Student ??= await context.Students.FirstOrDefaultAsync(m => m.stud_id == stud_id);
 
         if (Student is null)
         {
@@ -128,6 +128,6 @@ else
     private bool StudentExists(int stud_id)
     {
         using var context = DbFactory.CreateDbContext();
-        return context.Student.Any(e => e.stud_id == stud_id);
+        return context.Students.Any(e => e.stud_id == stud_id);
     }
 }

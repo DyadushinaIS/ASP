@@ -21,11 +21,11 @@
                 <InputNumber id="group" @bind-Value="Student.group" class="form-control" aria-required="true"/> 
                 <ValidationMessage For="() => Student.group" class="text-danger" /> 
             </div>        
-            <div class="mb-3">
+            @* <div class="mb-3">
                 <label for="group" class="form-label">Group:</label> 
                 <InputText id="group" @bind-Value="Student.Group" class="form-control" /> 
                 <ValidationMessage For="() => Student.Group" class="text-danger" /> 
-            </div>        
+            </div>  *@       
             <div class="mb-3">
                 <span class="text-danger">*</span>
                 <label for="last_name" class="form-label">last_name:</label> 
@@ -83,7 +83,7 @@
     private async Task AddStudent()
     {
         using var context = DbFactory.CreateDbContext();
-        context.Student.Add(Student);
+        context.Students.Add(Student);
         await context.SaveChangesAsync();
         NavigationManager.NavigateTo("/students");
     }
