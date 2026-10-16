@@ -18,6 +18,7 @@
 }
 else
 {
+    <h1>@Student.FullName</h1>
     <div class="row">
         @* <div class="col-md-10"> *@
         <div>
@@ -27,10 +28,10 @@ else
                 <div class="human-container">
                     <div class="human-text-fields">
                         <input type="hidden" name="Student.stud_id" value="@Student.stud_id" />
-                        <div class="mb-3">
+                        @* <div class="mb-3">
                             <span class="text-danger">*</span>
                             <label for="group" class="form-label">group:</label>
-                            @* <InputNumber id="group" @bind-Value="Student.group" class="form-control" aria-required="true" /> *@
+                            <InputNumber id="group" @bind-Value="Student.group" class="form-control" aria-required="true" />
                             <InputSelect id="group" @bind-Value="Student.group" class="form-control">
                                 @using (AcademyContext context=DbFactory.CreateDbContext())
                                 {
@@ -41,7 +42,10 @@ else
                                 }
                             </InputSelect>
                             <ValidationMessage For="() => Student.group" class="text-danger" />
-                        </div>
+                        </div> *@
+
+                        <CB_Groups Student="Student"/>
+
                         <div class="mb-3">
                             <label for="group" class="form-label">Group:</label>
                             <InputText id="group" @bind-Value="Student.Group.group_name" class="form-control" />
