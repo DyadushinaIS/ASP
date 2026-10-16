@@ -44,7 +44,7 @@ else
                             <ValidationMessage For="() => Student.group" class="text-danger" />
                         </div> *@
 
-                        <CB_Groups Student="Student"/>
+                        
 
                         <div class="mb-3">
                             <label for="group" class="form-label">Group:</label>
@@ -84,6 +84,9 @@ else
                             <InputText id="phone" @bind-Value="Student.phone" class="form-control" />
                             <ValidationMessage For="() => Student.phone" class="text-danger" />
                         </div>
+
+                        <CB_Groups Student="Student" />
+
                     </div>
                 <Photo Human="@Student" AllowChange="true"/>
                 </div>
