@@ -7,11 +7,11 @@ namespace Academy.Models
     [PrimaryKey(nameof(teacher),nameof(discipline))]
     public class TeachersDisciplinesRelation
     {
-        [Key]
+        //[Key]
         [Column(TypeName ="SMALLINT")]
         [ForeignKey(nameof(teacher))]
         public int teacher {  get; set; }
-        [Key]
+        //[Key]
         [Column(TypeName ="SMALLINT")]
         [ForeignKey(nameof(discipline))]
         public int discipline { get; set; }
