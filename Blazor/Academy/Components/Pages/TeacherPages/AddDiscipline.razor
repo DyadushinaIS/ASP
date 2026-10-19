@@ -1,0 +1,53 @@
+﻿@using Academy.Models;
+
+<form>
+	<h5>выберите дисциплину</h5>
+	<InputSelect @bind-Value="discipline">
+		<option selected disabled value="-1">---Выберите дисциплину---</option>
+		@if(discipline!=null)
+		{
+			@foreach(Discipline d in Disciplines)
+			{
+			if
+				(
+				TDR.Any(tdr => tdr.discipline == d.discipline_id) ||
+				NewDisciplines.Any(nd => nd.discipline == d.discipline_id) 
+				) continue;
+				<option value="@d.discipline_id">@d.discipline_name</option>
+			}
+		}
+	</InputSelect>
+	<button class="btn btn-primary">Добавить</button>
+	<ul>
+		@foreach(TeachersDisciplinesRelation tdr in NewDisciplines)
+		{
+			<li>@tdr.Discipline.discipline_name</li>
+		}
+	</ul>
+	<hr/>
+	<ul>
+		if (TDR!=null)
+		{
+			@foreach (TeachersDisciplinesRelation tdr in TDR)
+			{
+				<li>@tdr.Discipline.discipline_name</li>
+			}
+		}
+		
+	</ul>
+</form>
+
+<h3>AddDiscipline</h3>
+
+@code 
+
+{
+	[Parameter]
+	public Teacher Teacher{ get; set; }
+	ICollection<Discipline> Disciplines{ get; set; }
+	ICollection<TeachersDisciplinesRelation> TDR{ get; set; }
+	List<TeachersDisciplinesRelation> NewDisciplines = new List<TeachersDisciplinesRelation>();
+
+	int discipline = -1;
+
+}
