@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.ObjectModel;
 
 namespace Academy.Models
 {
@@ -15,6 +16,6 @@ namespace Academy.Models
         public int rate {  get; set; }
 
         //Navigation Properties
-        public ICollection<TeachersDisciplinesRelation> TDR { get; set; }
+        public  ObservableCollection <TeachersDisciplinesRelation> TDR { get; set; }
     }
 }
