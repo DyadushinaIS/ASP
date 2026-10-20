@@ -19,6 +19,6 @@ namespace Academy.Models
         public int number_of_lessons {  get; set; }
 
         //Navigation Properties
-        public ICollection<TeachersDisciplinesRelation> TDR {  get; set; }
+        public ICollection<TeachersDisciplinesRelation> TDR { get; set; } = default;
     }
 }
