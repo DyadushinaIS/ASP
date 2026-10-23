@@ -19,8 +19,8 @@ html {
 
 body {
   margin-bottom: 60px;
-  background-color:#323232;
-  color:aliceblue;
+  /*background-color:#323232;
+  color:aliceblue;*/
 }
 
 :: deep header, header *
