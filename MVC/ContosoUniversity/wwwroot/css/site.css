@@ -19,4 +19,12 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color:#323232;
+  color:aliceblue;
+}
+
+:: deep header, header *
+{
+  background-color:#242424;
+  color:aliceblue;
 }
