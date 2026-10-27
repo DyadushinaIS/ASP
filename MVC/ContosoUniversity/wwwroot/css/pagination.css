@@ -2,3 +2,28 @@
 {
 	height:48vh;
 }
+
+.pagination-controls, .pagination-items, .pagination-items > div 
+{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+	.pagination-items, .pagination-items > div 
+	{
+		justify-content: center;
+	}
+	.pagination-items>div
+	{
+		width:32px;
+		height:32px;
+		border: solid 1px;
+		margin:8px;
+	}
+
+	.selected-page
+	{
+		font-weight:500;
+		box-shadow: 0px 0px 5px 0px gray;
+	}
