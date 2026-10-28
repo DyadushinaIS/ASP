@@ -24,6 +24,8 @@
 
 	.selected-page
 	{
-		font-weight:500;
-		box-shadow: 0px 0px 5px 0px gray;
+		background-color:black;
+		color:white;
+		font-weight:800;
+		box-shadow: 0px 0px 16px 0px gray;
 	}
