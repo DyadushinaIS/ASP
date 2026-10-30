@@ -1,6 +1,6 @@
 ﻿.table-container
 {
-	height:48vh;
+	min-height:60vh;
 }
 
 .pagination-controls, .pagination-items, .pagination-items > a 

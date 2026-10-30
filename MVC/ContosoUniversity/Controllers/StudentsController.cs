@@ -16,9 +16,9 @@ public class StudentsController : Controller
     // GET: STUDENTS
     public async Task<IActionResult> Index
         (
-            string sortOrder, 
-            string searchString, 
-            int?pageIndex, 
+            string sortOrder,
+            string searchString,
+            int? pageIndex,
             int itemsPerPage=3
         )    
     {
@@ -49,6 +49,7 @@ public class StudentsController : Controller
             default:            students = students.OrderBy(s => s.LastName); break;
         }
 
+        ViewData["itemsPerPage"] = itemsPerPage;
         int pageSize = itemsPerPage;
         return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(),pageIndex ?? 1,pageSize));
         //return View(await students.ToListAsync());
