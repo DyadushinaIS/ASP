@@ -41,13 +41,14 @@
                        asp-route-searchString="@ViewData["CurrentFilter"]"
                        asp-route-itemsPerPage="@ViewData["ItemsPerPage"]"
                     >
-                        Last name
+                        @* Last name *@
+                        @Html.DisplayNameFor(m => Model.First().LastName)
                         @* @Html.DisplayNameFor(model=>model.LastName) *@
                     </a>
                 </th>
                 <th>
-                    First name
-                    @* @Html.DisplayNameFor(model => model.FirstName) *@
+                    @* First name *@
+                    @Html.DisplayNameFor(model => model.First().FirstName)
                 </th>
                 <th>
                     <a asp-action="Index"
@@ -55,8 +56,8 @@
                        asp-route-searchString="@ViewData["CurrentFilter"]"
                        asp-route-itemsPerPage="@ViewData["ItemsPerPage"]"
                     >
-                        Enrollment date
-                        @* @Html.DisplayNameFor(model=>model.EnrollmentDate) *@
+                        @* Enrollment date *@
+                        @Html.DisplayNameFor(model=>model.First().EnrollmentDate)
                     </a>
                     @* @Html.DisplayNameFor(model => model.EnrollmentDate) *@
                 </th>
